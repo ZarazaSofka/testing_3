@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Матричный калькулятор</title>
+  <style>
+    * {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    #calculator {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    button {
+      padding: 5px 10px;
+      margin: 5px;
+    }
+
+    .matrix-input {
+      font-family: Consolas;
+      background: #fff;
+      color: black;
+      border: none;
+      border-radius: 3px;
+      font-size: 16px;
+      font-weight: bold;
+      width: 45px;
+      height: 45px;
+      padding: 5px;
+      box-sizing: border-box;
+      text-align: center;
+      margin: 5px;
+    }
+
+    .matrix-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-width: 250px;
+      margin: 10px;
+      overflow-x: auto;
+    }
+
+    .matrix-wrapper {
+      align-self: start;
+      margin: 0 auto;
+    }
+
+    .matrix {
+      background: #b7e2d7;
+      padding: 5px;
+      border-radius: 10px;
+    }
+
+    .matrix-container h3 {
+      margin: 10px 0;
+    }
+
+    .matrix-row {
+      display: flex;
+    }
+
+    .sizeContainer {
+      margin-bottom: 10px;
+    }
+
+    .selector {
+      height: 20px;
+      width: 35px;
+    }
+
+    .matrix-input::placeholder {
+      background: #fff;
+      color: black;
+    }
+
+    .matrix-input:focus::placeholder {
+      opacity: 0;
+    }
+
+    select {
+      font-size: 16px;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="calculator">
+    <h1>Матричный калькулятор</h2>
+    <div class="container">
+      <div class="matrix-container">
+        <h3>Матрица A:</h3>
+        <div class="sizeContainer">
+          <input type="number" class="matrixRows selector" min="1" value="2">
+          <input type="number" class="matrixCols selector" min="1" value="2">
+          <input type="submit" class="buttonSize" value="ОК">
+          <input type="submit" class="buttonRandom" value="Авто">
+        </div>
+        <div class="matrix-wrapper">
+          <div id="matrixA" class="matrix"></div>
+        </div>
+      </div>
+      <div class="matrix-container">
+        <h3>Матрица B:</h3>
+        <div class="sizeContainer">
+          <input type="number" class="matrixRows selector" min="1" value="2">
+          <input type="number" class="matrixCols selector" min="1" value="2">
+          <input type="submit" class="buttonSize" value="ОК">
+          <input type="submit" class="buttonRandom" value="Авто">
+        </div>
+        <div class="matrix-wrapper">
+          <div id="matrixB" class="matrix"></div>
+        </div>
+      </div>
+      <div class="matrix-container">
+        <h3>Ответ:</h3>
+        <div class="sizeContainer">
+          <select id="operation">
+            <option value="addition">Сложить матрицы A и B</option>
+            <option value="multiplication">Умножить матрицы A и B</option>
+            <option value="scalarMultiplication">Умножить матрицу A на число</option>
+            <option value="transpose">Транспонировать матрицу A</option>
+            <option value="determinant">Вычислить определитель A</option>
+            <option value="inverse">Найти обратную матрицу к A</option>
+          </select>
+          <input type="submit" id="executeButton" value="OK">
+        </div>
+        <div class="matrix-wrapper">
+          <div id="resultMatrix" class="matrix"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+  <script src="matrixlib.js"></script>
+</body>
+</html>
